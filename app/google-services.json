@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "885241465636",
+    "project_id": "weathcare-4074d",
+    "storage_bucket": "weathcare-4074d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885241465636:android:9fec7b5e97c51aa82d41b1",
+        "android_client_info": {
+          "package_name": "com.example.weathcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885241465636-41hraqdkap71kc7prkhinta3lo54h3jf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFbg5V88phpn4AKCevo5FpnhQuFEgcDGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885241465636-41hraqdkap71kc7prkhinta3lo54h3jf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
