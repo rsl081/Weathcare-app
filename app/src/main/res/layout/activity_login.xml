@@ -1,55 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".login.LoginActivity"
-    android:background="@drawable/gradient_background">
-
-    <EditText
-        android:id="@+id/etEmailLogin"
-        android:layout_width="wrap_content"
+    android:background="@drawable/gradient_background"
+    android:weightSum="3"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:weightSum="1">
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text"
-        android:drawableLeft="@drawable/va_user_focus"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        android:paddingStart="10dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="8dp"
-        android:textColorHint="@color/white"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/etPasswordLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="LOGIN"
+        android:fontFamily="@font/helveticaneue_bold"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="40sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-    <EditText
-        android:id="@+id/etPasswordLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text"
-        android:drawableLeft="@drawable/va_pass_focus"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:paddingStart="10dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="8dp"
-        android:textColorHint="@color/white"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmailLogin" />
+        <EditText
+            android:id="@+id/etEmailLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text"
+            android:drawableLeft="@drawable/va_user_focus"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Name"
+            android:fontFamily="@font/helveticaneue_bold"
+            android:textColor="@color/white"
+            android:inputType="textPersonName"
+            android:paddingStart="10dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="8dp"
+            android:textColorHint="@color/white"
+            android:textSize="25sp"
+            android:layout_marginBottom="5dp"/>
 
+        <EditText
+            android:id="@+id/etPasswordLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text"
+            android:drawableLeft="@drawable/va_pass_focus"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Password"
+            android:fontFamily="@font/helveticaneue_bold"
+            android:textColor="@color/white"
+            android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="8dp"
+            android:textColorHint="@color/white"
+            android:textSize="25sp"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:weightSum="2">
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="match_parent"
@@ -58,14 +90,11 @@
         android:layout_marginEnd="60dp"
         android:background="@drawable/edit_button"
         android:text="Login"
+        android:fontFamily="@font/helveticaneue_bold"
         android:textColor="#2193b0"
         android:textSize="20sp"
-        app:backgroundTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/signupBtnLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />
+        android:layout_marginBottom="5dp"
+        app:backgroundTint="@color/white"/>
 
     <Button
         android:id="@+id/signupBtnLogin"
@@ -75,16 +104,10 @@
         android:layout_marginRight="60dp"
         android:background="@drawable/edit_button"
         android:text="Sign Up"
+        android:fontFamily="@font/helveticaneue_bold"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:backgroundTint="#6CCDE6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="5dp"
+        app:backgroundTint="#6CCDE6"/>
+    </LinearLayout>
+</LinearLayout>
