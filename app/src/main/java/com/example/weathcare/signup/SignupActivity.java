@@ -1,11 +1,16 @@
 package com.example.weathcare.signup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -16,11 +21,15 @@ import android.widget.Toast;
 import com.example.weathcare.R;
 import com.example.weathcare.login.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,6 +37,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private EditText etName, etEmail, etPassword, etConfirmPassword;
     private String name, email, password, confirmpassord;
     private Button btnSignup;
+
+    private FirebaseUser firebaseUser;
 
     private StorageReference fileStorage;
     private Uri localFileUri, serverFileUri;
@@ -64,7 +75,14 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         switch (view.getId())
         {
             case R.id.imageViewSignup:
-                Toast.makeText(this, "Hello Picurre!!", Toast.LENGTH_SHORT).show();
+                if(ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED)
+                {
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 101);
+                    Toast.makeText(this, "Hello Picurre!!", Toast.LENGTH_SHORT).show();
+                }else{
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},102);
+                }
             break;
             case R.id.signupBtn:
                 if(name.equals(""))
@@ -92,9 +110,16 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful())
                             {
-                                Toast.makeText(SignupActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-                            }else{
+                                firebaseUser = firebaseAuth.getCurrentUser();
+
+                                if(localFileUri != null)
+                                {
+                                    UpdateNameAndPhoto();
+                                }else{
+                                    Toast.makeText(SignupActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                                }
+                            } else{
                                 Toast.makeText(SignupActivity.this, "Signup Failed : " + task.getException(), Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -102,5 +127,64 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 }
             break;
         }
+    }//End of OnClick
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 101)
+        {
+            if(resultCode == RESULT_OK)
+            {
+                localFileUri = data.getData();
+                imageViewSignup.setImageURI(localFileUri);
+            }
+        }
+    }//End of onActivityResult
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == 102)
+        {
+            if(grantResults[0]==PackageManager.PERMISSION_GRANTED)
+            {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 101);
+            }else
+            {
+                Toast.makeText(this, "Access permission is required", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
+
+    private void UpdateNameAndPhoto()
+    {
+        String strFileName = firebaseUser.getUid() + ".jpg";
+        final StorageReference fileRef = fileStorage.child("images/"+strFileName);
+
+        fileRef.putFile(localFileUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                if(task.isSuccessful())
+                {
+                    fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                             serverFileUri = uri;
+
+                            UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(etName.getText().toString().trim())
+                                    .setPhotoUri(serverFileUri)
+                                    .build();
+                        }
+                    });
+                }
+            }
+        });
+    }//End of UpdateNameAndPhoto
+
+
+
+
 }
