@@ -124,21 +124,21 @@
         android:layout_gravity="center"
         android:textSize="25sp" />
 
-    <Button
-        android:id="@+id/signupBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
-        android:background="@drawable/edit_button"
-        android:text="Sign Up"
-        android:fontFamily="@font/helveticaneue_bold"
-        android:textColor="#6CCDE6"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        app:backgroundTint="@color/white"/>
+        <Button
+            android:id="@+id/signupBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/edit_button"
+            android:fontFamily="@font/helveticaneue_bold"
+            android:text="Sign Up"
+            android:textColor="#6CCDE6"
+            android:textSize="20sp"
+            app:backgroundTint="@color/white" />
 
     </LinearLayout>
     </ScrollView>
