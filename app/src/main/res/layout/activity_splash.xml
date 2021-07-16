@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity">
+    tools:context=".SplashActivity"
+    android:background="@drawable/gradient_background_signup">
 
     <ImageView
         android:id="@+id/ivSplash"
@@ -16,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.24"
-        app:srcCompat="@drawable/logoapp" />
+        app:srcCompat="@drawable/splashscreenlogo" />
 
     <TextView
         android:id="@+id/tvSplash"
@@ -25,7 +26,7 @@
         android:layout_marginBottom="228dp"
         android:text="@string/app_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="@color/ic_launcher_background"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
