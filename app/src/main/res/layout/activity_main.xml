@@ -2,52 +2,148 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/back"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/goodweather"
+    tools:ignore="ExtraText">
+
+    <include
+        layout="@layout/hot_weather"
+        android:id="@+id/htweather"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="116dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100sp"
+            android:layout_height="90sp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center|left"
+            android:text="  Weather Checker"
+            android:textColor="#FFFFFF"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Yow! Kurt! hey hey hey hey hey"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="City Temperature Check"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chekc 1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.154" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Angela"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintEnd_toStartOf="@+id/editTextCity"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.422" />
+        app:layout_constraintVertical_bias="0.31" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <EditText
+        android:id="@+id/editTextCity"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="   Enter City Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logoapp" />
+        app:layout_constraintVertical_bias="0.28" />
 
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="240dp"
+        android:layout_height="45dp"
+        android:layout_margin="5dp"
+        android:layout_marginTop="16dp"
+        android:text="City Information"
+        app:backgroundTint="#00B6A5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCity" />
+
+    <TextView
+        android:id="@+id/textViewTemp"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="Ouput Temp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/submitBtn"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/textViewHumidity"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="Ouput Humidity"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/textViewWindSpeed"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="OuputWindSpeed"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHumidity"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/textViewCountry"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:text="Ouput Country"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWindSpeed"
+        app:layout_constraintVertical_bias="0.515"
+        android:gravity="center_horizontal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,16 +17,18 @@
         <activity android:name=".SplashActivity"
                   android:screenOrientation="portrait"
                   android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
+        </activity>
+        <activity android:name=".InternetActivity" />
+        <activity android:name=".signup.SignupActivity" />
+        <activity android:name=".login.LoginActivity"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InternetActivity" />
-        <activity android:name=".signup.SignupActivity" />
-        <activity android:name=".login.LoginActivity"></activity>
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
