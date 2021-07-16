@@ -88,6 +88,7 @@
         android:orientation="vertical"
         android:layout_weight="1"
         android:weightSum="2">
+
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="match_parent"
@@ -116,4 +117,5 @@
         android:layout_marginTop="5dp"
         app:backgroundTint="#6CCDE6"/>
     </LinearLayout>
+
 </LinearLayout>

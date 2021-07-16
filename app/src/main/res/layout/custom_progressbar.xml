@@ -27,4 +27,6 @@
             android:textColor="#42275a "
             android:textStyle="bold" />
     </LinearLayout>
+
+
 </androidx.cardview.widget.CardView>

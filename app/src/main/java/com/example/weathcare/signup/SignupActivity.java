@@ -39,7 +39,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 
-public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
+public class SignupActivity extends AppCompatActivity implements View.OnClickListener
+{
 
     ImageView imageViewSignup;
     private EditText etName, etEmail, etPassword, etConfirmPassword;
@@ -53,7 +54,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private Uri localFileUri, serverFileUri;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         Init();
@@ -74,7 +76,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 101)
         {
@@ -141,7 +144,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view)
+    {
         name = etName.getText().toString().trim();
         email = etEmail.getText().toString().trim();
         password = etPassword.getText().toString().trim();
