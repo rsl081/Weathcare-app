@@ -3,6 +3,7 @@ package com.example.weathcare;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.weathcare.R;
@@ -14,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Toast.makeText(getApplicationContext(), "Test string", Toast.LENGTH_SHORT).show();
     }
 }

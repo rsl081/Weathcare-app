@@ -10,7 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.weathcare.InternetActivity;
+import com.example.weathcare.MainActivity;
 import com.example.weathcare.R;
+import com.example.weathcare.common.Util;
 import com.example.weathcare.signup.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,6 +25,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText etEmail, etPassword;
     private String email, password;
     private Button btnLogin, btnSignUp;
+
+    private View progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void Init()
     {
+        progressBar = findViewById(R.id.login_progressbar);
         etEmail = findViewById(R.id.etEmailLogin);
         etPassword = findViewById(R.id.etPasswordLogin);
 
@@ -39,6 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         btnLogin.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
+
     }
 
     @Override
@@ -57,18 +65,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 {
                     etPassword.setError("Password is empty");
                 }else{
-                    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                    firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful())
-                            {
-
-                            }else{
-                                Toast.makeText(LoginActivity.this, "Login Failed : " + task.getException(), Toast.LENGTH_SHORT).show();
+                    if(Util.connectionAvailable(this)) {
+                        progressBar.setVisibility(View.VISIBLE);
+                        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+//                            progressBar.setVisibility(View.GONE);
+                                if (task.isSuccessful()) {
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    finish();
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Login Failed : " + task.getException(), Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });
+                        });
+                    }else{
+                        startActivity(new Intent(LoginActivity.this, InternetActivity.class));
+                    }
                 }
             break;
             case R.id.signupBtnLogin:
