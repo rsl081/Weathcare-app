@@ -3,6 +3,7 @@ package com.example.weathcare;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.weathcare.common.NodeNames;
 import com.example.weathcare.common.WeatherTip;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import androidx.appcompat.app.AppCompatActivity;
@@ -94,23 +96,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Double tempeConversion = Double.parseDouble(temperature)-273.15f;
             String humidity = object1.getString("humidity");
 
-            JSONObject object2 = response.getJSONObject("wind");
-            String speed = object2.getString("speed");
+            JSONArray object2 = response.getJSONArray("weather");
+            JSONObject obj = object2.getJSONObject(0);
+            String weather = obj.getString("main");
+            String weath_desc = obj.getString("description");
 
             JSONObject object3 = response.getJSONObject("sys");
             String country = object3.getString("country");
 
-//            if(speed.equals("1.03"))
-//            {
-//                progressBar.setVisibility(View.VISIBLE);
-//                infoBtn.setVisibility(View.GONE);
-//            }
+
+            //Gawa ako on click nilang lahat
+            if(weather.equals("Rain"))
+            {
+                progressBar.setVisibility(View.VISIBLE);
+                infoBtn.setVisibility(View.GONE);
+
+                //Gone button dito pag nag back
+            }else if(weather.equals("Thunderstorm"))
+            {
+
+                //Gone button dito pag nag back
+            }else if(weather.equals("Drizzle"))
+            {
+
+                //Gone button dito pag nag back
+            }else if(weather.equals("Snow"))
+            {
+
+                //Gone button dito pag nag back
+            }else if(weather.equals("Clear"))
+            {
+
+                //Gone button dito pag nag back
+            }else if(weather.equals("Clear") && tempeConversion >= 25.0)
+            {
+
+                //Gone button dito pag nag back
+            }
+            else if(weather.equals("Clouds"))
+            {
+
+                //Gone button dito pag nag back
+            }
 
             printTemperature.setText("Temperature: "+tempeConversion.toString().substring(0,5) + " C");
             printHumidity.setText("Humidity: "+ humidity);
-            printWindSpeed.setText("Wind Speed: " + speed);
-//            printCountry.setText("Country: " + country);
-            printCountry.setText(WeatherTip.STAYHyrady);
+            printWindSpeed.setText("Wind Speed: " + temperature);
+            printCountry.setText("Country: " + country);
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
