@@ -66,13 +66,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     etPassword.setError("Password is empty");
                 }else{
                     if(Util.connectionAvailable(this)) {
-                        progressBar.setVisibility(View.VISIBLE);
+
                         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
                         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 //                            progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
+                                    progressBar.setVisibility(View.VISIBLE);
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                     finish();
                                 } else {
