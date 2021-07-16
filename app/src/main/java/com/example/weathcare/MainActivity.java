@@ -9,7 +9,8 @@ import android.widget.Toast;
 import com.example.weathcare.R;
 import com.example.weathcare.login.LoginActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
