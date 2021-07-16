@@ -127,22 +127,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful())
                                     {
-                                        String userID = firebaseUser.getUid();
-                                        databaseReference = FirebaseDatabase.getInstance().getReference().child(NodeNames.USERS);
-
-                                        HashMap<String, String> hashMap = new HashMap<>();
-
-                                        hashMap.put(NodeNames.NAME, etName.getText().toString().trim());
-                                        hashMap.put(NodeNames.EMAIL, etEmail.getText().toString().trim());
-                                        hashMap.put(NodeNames.PHOTO, serverFileUri.getPath());
-
-                                        databaseReference.child(userID).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                Toast.makeText(SignupActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-                                            }
-                                        });
+                                        Toast.makeText(SignupActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                                     }
                                 }
                             });
