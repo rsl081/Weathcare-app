@@ -26,7 +26,7 @@
             android:layout_gravity="center"
             android:backgroundTint="@color/black"
             android:onClick="onClick"
-            app:srcCompat="@drawable/logoapp" />
+            app:srcCompat="@drawable/ic_add_photo" />
 
         <TextView
             android:layout_width="match_parent"
