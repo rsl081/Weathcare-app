@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.24"
-        app:srcCompat="@drawable/logoappold" />
+        app:srcCompat="@drawable/logoapp" />
 
     <TextView
         android:id="@+id/tvSplash"
@@ -30,4 +30,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
