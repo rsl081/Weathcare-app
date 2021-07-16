@@ -109,10 +109,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Apikey nyo dapat ilagay dito pag nag error
         String apikey = "e1e4d822bb3f6e0db3e8bba1880c7e33";
         String city = editTextCity.getText().toString();
-        String url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+apikey+"\n";
+        String url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+apikey+"\n";//asd
         return url;
     }
-
-
 
 }
