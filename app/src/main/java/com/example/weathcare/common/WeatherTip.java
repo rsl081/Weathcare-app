@@ -10,5 +10,4 @@ public class WeatherTip
     public static final String warmAndDry = "Always pack an umbrella and a jacket or raincoat when going out. If forecast is bad, avoid going out. Safety first!";
     public static final String chargePhone = "Communication is vital during emergencies. Your phone will be your best friend as you read updates and check family and friends.";
 
-
 }

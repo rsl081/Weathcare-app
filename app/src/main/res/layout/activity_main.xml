@@ -15,6 +15,21 @@
         android:id="@+id/htweather"
         android:visibility="gone" />
 
+    <include
+        layout="@layout/rainyweather"
+        android:id="@+id/rnweather"
+        android:visibility="gone" />
+
+    <include
+        layout="@layout/coldweather"
+        android:id="@+id/coldweather"
+        android:visibility="gone" />
+
+    <include
+        layout="@layout/goodweather"
+        android:id="@+id/cloudseather"
+        android:visibility="gone" />
+
 
     <EditText
         android:id="@+id/editTextCity"

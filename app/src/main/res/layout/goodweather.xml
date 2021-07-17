@@ -16,7 +16,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewTemp"
+                android:id="@+id/textViewTempCl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
@@ -31,7 +31,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display4" />
 
             <TextView
-                android:id="@+id/textViewDescription"
+                android:id="@+id/textViewDescriptionCl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
@@ -57,7 +57,7 @@
 
 
             <TextView
-                android:id="@+id/textViewHumidity"
+                android:id="@+id/textViewTip1Cl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -69,7 +69,7 @@
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/textViewWindSpeed"
+                android:id="@+id/textViewTip2Cl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -81,7 +81,7 @@
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/textViewCountry"
+                android:id="@+id/textViewTip3Cl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -96,16 +96,17 @@
                 android:id="@+id/bckBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_button"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:onClick="BtnBackBtn"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
+                android:text="BACK"
                 android:textColor="#2193b0"
                 android:textSize="20sp"
-                android:background="@drawable/edit_button"
-                android:text="BACK"
-                android:fontFamily="@font/helveticaneue_bold"
-                android:layout_gravity="center"
                 app:backgroundTint="@color/white" />
         </LinearLayout>
     </ScrollView>

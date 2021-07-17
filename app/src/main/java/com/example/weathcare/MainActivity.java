@@ -16,45 +16,98 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.weathcare.common.NodeNames;
 import com.example.weathcare.common.WeatherTip;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText editTextCity;
-    TextView printTemperature;
-    TextView printHumidity;
-    TextView printWindSpeed;
-    TextView printCountry;
+    //Clouds
+    TextView printTemperatureCloud;
+    TextView printDescriptionCloud;
+    TextView printTip1Cloud;
+    TextView printTip2Cloud;
+    TextView printTip3Cloud;
+
+    //Rain
+    TextView printTemperatureRain;
+    TextView printDescriptionRain;
+    TextView printTip1Rain;
+    TextView printTip2Rain;
+    TextView printTip3Rain;
+
+    //Snow
+    TextView printTemperatureSnow;
+    TextView printDescriptionSnow;
+    TextView printTip1Snow;
+    TextView printTip2Snow;
+    TextView printTip3Snow;
+
+    //Hot
+    TextView printTemperatureHot;
+    TextView printDescriptionHot;
+    TextView printTip1Hot;
+    TextView printTip2Hot;
+    TextView printTip3Hot;
+
+
     Button infoBtn;
 
-    private View progressBar;
+    private View viewHot;
+    private View viewRain;
+    private View viewSnow;
+    private View viewClouds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        progressBar = findViewById(R.id.htweather);
+
         Init();
     }
 
     private void Init()
     {
+        viewHot = findViewById(R.id.htweather);
+        viewRain = findViewById(R.id.rnweather);
+        viewSnow = findViewById(R.id.coldweather);
+        viewClouds = findViewById(R.id.cloudseather);
+
         //EditText
         editTextCity =  findViewById(R.id.editTextCity);
 
-        //Print
-        printTemperature = findViewById(R.id.textViewTemp);
-        printHumidity = findViewById(R.id.textViewHumidity);
-        printWindSpeed = findViewById(R.id.textViewWindSpeed);
-        printCountry = findViewById(R.id.textViewCountry);
+        //Clouds
+        printTemperatureCloud = findViewById(R.id.textViewTempCl);
+        printDescriptionCloud = findViewById(R.id.textViewDescriptionCl);
+        printTip1Cloud = findViewById(R.id.textViewTip1Cl);
+        printTip2Cloud = findViewById(R.id.textViewTip2Cl);
+        printTip3Cloud = findViewById(R.id.textViewTip3Cl);
 
+        //Rain
+        printTemperatureRain = findViewById(R.id.textViewTempRain);
+        printDescriptionRain = findViewById(R.id.textViewDescriptionRain);
+        printTip1Rain = findViewById(R.id.textViewTip1Rn);
+        printTip2Rain = findViewById(R.id.textViewTip2Rn);
+        printTip3Rain = findViewById(R.id.textViewTip3Rn);
+
+        //Hot
+        printTemperatureHot = findViewById(R.id.textViewTempHot);
+        printDescriptionHot = findViewById(R.id.textViewDescriptionHot);
+        printTip1Hot = findViewById(R.id.textViewTip1Ht);
+        printTip2Hot = findViewById(R.id.textViewTip2Ht);
+        printTip3Hot = findViewById(R.id.textViewTip3Ht);
+
+        //Snow
+        printTemperatureSnow = findViewById(R.id.textViewTempSnow);
+        printDescriptionSnow = findViewById(R.id.textViewDescriptionSnow);
+        printTip1Snow = findViewById(R.id.textViewTip1Sn);
+        printTip2Snow = findViewById(R.id.textViewTip2Sn);
+        printTip3Snow = findViewById(R.id.textViewTip3Sn);
+        
         //Btn
         infoBtn = findViewById(R.id.submitBtn);
 
@@ -63,7 +116,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view)
+    {
         switch (view.getId())
         {
             case R.id.submitBtn:
@@ -108,42 +162,57 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //Gawa ako on click nilang lahat
             if(weather.equals("Rain"))
             {
-                progressBar.setVisibility(View.VISIBLE);
+                viewRain.setVisibility(View.VISIBLE);
                 infoBtn.setVisibility(View.GONE);
 
+                Log.v("HAPPY", "Rain");
                 //Gone button dito pag nag back
             }else if(weather.equals("Thunderstorm"))
             {
+                Log.v("HAPPY", "Thunder");
 
                 //Gone button dito pag nag back
             }else if(weather.equals("Drizzle"))
             {
-
+                Log.v("HAPPY", "Drizle");
                 //Gone button dito pag nag back
             }else if(weather.equals("Snow"))
             {
+                viewSnow.setVisibility(View.VISIBLE);
+                infoBtn.setVisibility(View.GONE);
+
+                Log.v("HAPPY", "Snow");
 
                 //Gone button dito pag nag back
             }else if(weather.equals("Clear"))
             {
+                viewHot.setVisibility(View.VISIBLE);
+                infoBtn.setVisibility(View.GONE);
 
+                Log.v("HAPPY", "Clear");
                 //Gone button dito pag nag back
-            }else if(weather.equals("Clear") && tempeConversion >= 25.0)
+            }else if(weather.equals("Clear") && tempeConversion >= 38.0)
             {
+
 
                 //Gone button dito pag nag back
             }
             else if(weather.equals("Clouds"))
             {
+                viewClouds.setVisibility(View.VISIBLE);
+                infoBtn.setVisibility(View.GONE);
 
+                Log.v("HAPPY", "Clouds");
                 //Gone button dito pag nag back
+
+                printTemperatureCloud.setText(tempeConversion.toString().substring(0,5) + " °C");
+                printDescriptionCloud.setText(weath_desc);
+                printTip1Cloud.setText(WeatherTip.stayCool);
+                printTip2Cloud.setText(WeatherTip.stayHydrated);
+                printTip3Cloud.setText(WeatherTip.stayInformed);
             }
 
-            printTemperature.setText(tempeConversion.toString().substring(0,5) + " °C");
-//            printHumidity.setText("Humidity: "+ humidity);
-            printHumidity.setText(WeatherTip.stayCool);
-            printWindSpeed.setText(WeatherTip.stayHydrated);
-            printCountry.setText(WeatherTip.stayInformed);
+
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -157,6 +226,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String city = editTextCity.getText().toString();
         String url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+apikey+"\n";//asd
         return url;
+    }
+    
+    public void BtnBackBtn(View view)
+    {
+        Toast.makeText(this, "asdasadadasa", Toast.LENGTH_SHORT).show();
     }
 
 }

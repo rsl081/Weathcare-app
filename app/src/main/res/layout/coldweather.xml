@@ -16,7 +16,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewTemp"
+                android:id="@+id/textViewTempSnow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
@@ -31,7 +31,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display4" />
 
             <TextView
-                android:id="@+id/textViewDescription"
+                android:id="@+id/textViewDescriptionSnow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
@@ -57,7 +57,7 @@
 
 
             <TextView
-                android:id="@+id/textViewHumidity"
+                android:id="@+id/textViewTip1Sn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -69,7 +69,7 @@
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/textViewWindSpeed"
+                android:id="@+id/textViewTip2Sn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -81,7 +81,7 @@
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/textViewCountry"
+                android:id="@+id/textViewTip3Sn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
