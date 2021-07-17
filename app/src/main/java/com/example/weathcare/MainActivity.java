@@ -139,10 +139,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Gone button dito pag nag back
             }
 
-            printTemperature.setText("Temperature: "+tempeConversion.toString().substring(0,5) + " C");
-            printHumidity.setText("Humidity: "+ humidity);
-            printWindSpeed.setText("Wind Speed: " + temperature);
-            printCountry.setText("Country: " + country);
+            printTemperature.setText(tempeConversion.toString().substring(0,5) + " °C");
+//            printHumidity.setText("Humidity: "+ humidity);
+            printHumidity.setText(WeatherTip.stayCool);
+            printWindSpeed.setText(WeatherTip.stayHydrated);
+            printCountry.setText(WeatherTip.stayInformed);
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();

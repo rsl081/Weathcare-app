@@ -1,14 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/goodweather">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_horizontal"
+                android:text="Temp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:textSize="50sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display4" />
+
+            <TextView
+                android:id="@+id/textViewDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_horizontal"
+                android:text="Description"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="50dp"
+                android:text="Tips:"
+                android:textSize="20sp"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/white"/>
 
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/goodweather"/>
-</androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/textViewHumidity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Tip No. 1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/textViewWindSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Tip No. 2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/textViewCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Tip No. 3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/bckBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:textColor="#2193b0"
+                android:textSize="20sp"
+                android:background="@drawable/edit_button"
+                android:text="BACK"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:layout_gravity="center"
+                app:backgroundTint="@color/white" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
