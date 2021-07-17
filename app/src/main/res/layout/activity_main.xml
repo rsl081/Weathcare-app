@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/back"
+    android:id="@+id/main_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
@@ -65,5 +65,12 @@
         android:fontFamily="@font/helveticaneue_bold"
         android:layout_gravity="center"
         app:backgroundTint="@color/white" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="BtnLogoutHomeClick"
+        android:text="@string/home_logout_btn" />
 
 </LinearLayout>

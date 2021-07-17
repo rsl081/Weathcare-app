@@ -2,11 +2,13 @@ package com.example.weathcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.weathcare.common.WeatherTip;
+import com.example.weathcare.login.LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,6 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private View viewRain;
     private View viewSnow;
     private View viewClouds;
+
+    private LinearLayout llmainMenu;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -107,9 +117,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         printTip1Snow = findViewById(R.id.textViewTip1Sn);
         printTip2Snow = findViewById(R.id.textViewTip2Sn);
         printTip3Snow = findViewById(R.id.textViewTip3Sn);
+
+        llmainMenu = findViewById(R.id.main_menu);
         
         //Btn
         infoBtn = findViewById(R.id.submitBtn);
+
+        //FirebaseAuth
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
         //Listener
         infoBtn.setOnClickListener(this);
@@ -160,22 +176,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             //Gawa ako on click nilang lahat
-            if(weather.equals("Rain"))
+            if(weather.equals("Rain") || weather.equals("Thunderstorm"))
             {
                 viewRain.setVisibility(View.VISIBLE);
                 infoBtn.setVisibility(View.GONE);
 
                 Log.v("HAPPY", "Rain");
-                //Gone button dito pag nag back
-            }else if(weather.equals("Thunderstorm"))
-            {
-                Log.v("HAPPY", "Thunder");
 
-                //Gone button dito pag nag back
+                printTemperatureRain.setText(tempeConversion.toString().substring(0,5) + " °C");
+                printDescriptionRain.setText(weath_desc);
+                printTip1Rain.setText(WeatherTip.warmAndDry);
+                printTip2Rain.setText(WeatherTip.chargePhone);
+                printTip3Rain.setText(WeatherTip.tuneToNews);
+
             }else if(weather.equals("Drizzle"))
             {
                 Log.v("HAPPY", "Drizle");
-                //Gone button dito pag nag back
+
             }else if(weather.equals("Snow"))
             {
                 viewSnow.setVisibility(View.VISIBLE);
@@ -183,17 +200,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Log.v("HAPPY", "Snow");
 
-                //Gone button dito pag nag back
+                printTemperatureSnow.setText(tempeConversion.toString().substring(0,5) + " °C");
+                printDescriptionSnow.setText(weath_desc);
+                printTip1Snow.setText(WeatherTip.dressWarmly);
+                printTip2Snow.setText(WeatherTip.listenWeatherForecast);
+                printTip3Snow.setText(WeatherTip.seekShelter);
+
+
             }else if(weather.equals("Clear"))
             {
                 viewHot.setVisibility(View.VISIBLE);
                 infoBtn.setVisibility(View.GONE);
 
+                printTemperatureHot.setText(tempeConversion.toString().substring(0,5) + " °C");
+                printDescriptionHot.setText(weath_desc);
+                printTip1Hot.setText(WeatherTip.stayHydrated);
+                printTip2Hot.setText(WeatherTip.stayCool);
+                printTip3Hot.setText(WeatherTip.stayInformed);
+
+
                 Log.v("HAPPY", "Clear");
-                //Gone button dito pag nag back
             }else if(weather.equals("Clear") && tempeConversion >= 38.0)
             {
+                viewHot.setVisibility(View.VISIBLE);
+                infoBtn.setVisibility(View.GONE);
 
+                printTemperatureHot.setText(tempeConversion.toString().substring(0,5) + " °C");
+                printDescriptionHot.setText(weath_desc);
+                printTip1Hot.setText(WeatherTip.stayHydrated);
+                printTip2Hot.setText(WeatherTip.stayCool);
+                printTip3Hot.setText(WeatherTip.stayInformed);
 
                 //Gone button dito pag nag back
             }
@@ -207,9 +243,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 printTemperatureCloud.setText(tempeConversion.toString().substring(0,5) + " °C");
                 printDescriptionCloud.setText(weath_desc);
-                printTip1Cloud.setText(WeatherTip.stayCool);
-                printTip2Cloud.setText(WeatherTip.stayHydrated);
-                printTip3Cloud.setText(WeatherTip.stayInformed);
+                printTip1Cloud.setText(WeatherTip.spendTime);
+                printTip2Cloud.setText(WeatherTip.startFitness);
+                printTip3Cloud.setText(WeatherTip.spendOutdoors);
             }
 
 
@@ -231,6 +267,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void BtnBackBtn(View view)
     {
         Toast.makeText(this, "asdasadadasa", Toast.LENGTH_SHORT).show();
+        viewRain.setVisibility(View.GONE);
+        viewClouds.setVisibility(View.GONE);
+        viewSnow.setVisibility(View.GONE);
+        viewHot.setVisibility(View.GONE);
+
+        llmainMenu.setVisibility(View.VISIBLE);
+        infoBtn.setVisibility(View.VISIBLE);
+    }
+
+
+    public void BtnLogoutHomeClick(View v)
+    {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signOut();
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        finish();
     }
 
 }
