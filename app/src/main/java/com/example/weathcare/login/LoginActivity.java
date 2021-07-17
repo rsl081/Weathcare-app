@@ -14,6 +14,7 @@ import com.example.weathcare.InternetActivity;
 import com.example.weathcare.MainActivity;
 import com.example.weathcare.R;
 import com.example.weathcare.common.Util;
+import com.example.weathcare.password.ResetPasswordActivity;
 import com.example.weathcare.signup.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -90,5 +91,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(this, SignupActivity.class));
             break;
         }
+    }
+
+    public void TvResetPasswordClick(View view)
+    {
+        startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
     }
 }
