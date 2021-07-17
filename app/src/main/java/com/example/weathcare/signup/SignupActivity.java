@@ -20,8 +20,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.weathcare.InternetActivity;
 import com.example.weathcare.R;
 import com.example.weathcare.common.NodeNames;
+import com.example.weathcare.common.Util;
 import com.example.weathcare.login.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -164,6 +166,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 break;
             case R.id.signupBtn:
+
                 if(name.equals(""))
                 {
                     etName.setError("Name is empty");
@@ -183,26 +186,28 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 {
                     etConfirmPassword.setError("Password mismatch");
                 }else{
-                    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                    firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful())
-                            {
-                                firebaseUser = firebaseAuth.getCurrentUser();
+                    if(Util.connectionAvailable(this)) {
+                        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    firebaseUser = firebaseAuth.getCurrentUser();
 
-                                if(localFileUri != null)
-                                {
-                                    UpdateNameAndPhoto();
-                                }else{
-                                    Toast.makeText(SignupActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                                    if (localFileUri != null) {
+                                        UpdateNameAndPhoto();
+                                    } else {
+                                        Toast.makeText(SignupActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                                    }
+                                } else {
+                                    Toast.makeText(SignupActivity.this, "Signup Failed : " + task.getException(), Toast.LENGTH_SHORT).show();
                                 }
-                            } else{
-                                Toast.makeText(SignupActivity.this, "Signup Failed : " + task.getException(), Toast.LENGTH_SHORT).show();
                             }
-                        }
-                    });
+                        });
+                    }else{
+                        startActivity(new Intent(SignupActivity.this, InternetActivity.class));
+                    }
                 }
                 break;
         }

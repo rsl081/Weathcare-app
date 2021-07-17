@@ -88,7 +88,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             break;
             case R.id.signupBtnLogin:
-                startActivity(new Intent(this, SignupActivity.class));
+                if(Util.connectionAvailable(this)) {
+                    startActivity(new Intent(this, SignupActivity.class));
+                }else{
+                    startActivity(new Intent(LoginActivity.this, InternetActivity.class));
+                }
             break;
         }
     }
