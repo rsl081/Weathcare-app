@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InternetActivity">
+    tools:context=".InternetActivity"
+    android:background="@drawable/gradient_background_signup">
 
     <TextView
         android:id="@+id/tvMessage"
@@ -12,11 +13,12 @@
         android:layout_height="wrap_content"
         android:text="@string/no_internet"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#42275a"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/helveticaneue_bold" />
 
     <ProgressBar
         android:id="@+id/pbMessage"
@@ -38,6 +40,9 @@
         android:layout_marginBottom="72dp"
         android:onClick="BtnCloseClick"
         android:text="Close"
+        android:background="@drawable/edit_button"
+        app:backgroundTint="@color/white"
+        android:textColor="#6CCDE6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnRetry"
         app:layout_constraintHorizontal_bias="0.5"
@@ -49,6 +54,9 @@
         android:layout_height="wrap_content"
         android:onClick="BtnRetryClick"
         android:text="Retry"
+        android:background="@drawable/edit_button"
+        app:backgroundTint="@color/white"
+        android:textColor="#6CCDE6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnClose"
