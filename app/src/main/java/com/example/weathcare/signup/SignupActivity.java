@@ -51,7 +51,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private Button btnSignup;
 
     private FirebaseUser firebaseUser;
-    private DatabaseReference databaseReference;
 
     private StorageReference fileStorage;
     private Uri localFileUri, serverFileUri;

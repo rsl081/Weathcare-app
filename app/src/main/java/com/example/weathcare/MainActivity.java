@@ -174,14 +174,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             JSONObject object3 = response.getJSONObject("sys");
             String country = object3.getString("country");
 
-
-            //Gawa ako on click nilang lahat
-            if(weather.equals("Rain") || weather.equals("Thunderstorm"))
+            if(weather.equals("Rain") || weather.equals("Thunderstorm") || weather.equals("Drizzle"))
             {
                 viewRain.setVisibility(View.VISIBLE);
                 infoBtn.setVisibility(View.GONE);
-
-                Log.v("HAPPY", "Rain");
 
                 printTemperatureRain.setText(tempeConversion.toString().substring(0,5) + " °C");
                 printDescriptionRain.setText(weath_desc);
@@ -189,16 +185,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 printTip2Rain.setText(WeatherTip.chargePhone);
                 printTip3Rain.setText(WeatherTip.tuneToNews);
 
-            }else if(weather.equals("Drizzle"))
-            {
-                Log.v("HAPPY", "Drizle");
-
             }else if(weather.equals("Snow"))
             {
                 viewSnow.setVisibility(View.VISIBLE);
                 infoBtn.setVisibility(View.GONE);
-
-                Log.v("HAPPY", "Snow");
 
                 printTemperatureSnow.setText(tempeConversion.toString().substring(0,5) + " °C");
                 printDescriptionSnow.setText(weath_desc);
@@ -235,8 +225,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 viewClouds.setVisibility(View.VISIBLE);
                 infoBtn.setVisibility(View.GONE);
 
-                Log.v("HAPPY", "Clouds");
-                //Gone button dito pag nag back
 
                 printTemperatureCloud.setText(tempeConversion.toString().substring(0,5) + " °C");
                 printDescriptionCloud.setText(weath_desc);
@@ -244,7 +232,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 printTip2Cloud.setText(WeatherTip.startFitness);
                 printTip3Cloud.setText(WeatherTip.spendOutdoors);
             }
-
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -254,7 +241,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String UrlOFOpenWeatherMap()
     {
-        //Apikey nyo dapat ilagay dito pag nag error
         String apikey = "e1e4d822bb3f6e0db3e8bba1880c7e33";
         String city = editTextCity.getText().toString();
         String url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+apikey+"\n";//asd

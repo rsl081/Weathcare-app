@@ -74,7 +74,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-//                            progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     progressBar.setVisibility(View.VISIBLE);
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
