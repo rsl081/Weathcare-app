@@ -92,21 +92,22 @@
         android:fontFamily="@font/helveticaneue_bold"
         android:textColor="@color/white" />
 
-    <Button
-        android:id="@+id/bckBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:textColor="#efcb8e"
-        android:textSize="20sp"
-        android:background="@drawable/edit_button"
-        android:text="BACK"
-        android:fontFamily="@font/helveticaneue_bold"
-        android:layout_gravity="center"
-        app:backgroundTint="@color/white" />
+            <Button
+                android:id="@+id/bckBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_button"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:onClick="BtnBackBtn"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="BACK"
+                android:textColor="#efcb8e"
+                android:textSize="20sp"
+                app:backgroundTint="@color/white" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -218,8 +218,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 printTip2Hot.setText(WeatherTip.stayCool);
                 printTip3Hot.setText(WeatherTip.stayInformed);
 
-
-                Log.v("HAPPY", "Clear");
             }else if(weather.equals("Clear") && tempeConversion >= 38.0)
             {
                 viewHot.setVisibility(View.VISIBLE);
@@ -231,7 +229,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 printTip2Hot.setText(WeatherTip.stayCool);
                 printTip3Hot.setText(WeatherTip.stayInformed);
 
-                //Gone button dito pag nag back
             }
             else if(weather.equals("Clouds"))
             {
@@ -266,7 +263,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     
     public void BtnBackBtn(View view)
     {
-        Toast.makeText(this, "asdasadadasa", Toast.LENGTH_SHORT).show();
         viewRain.setVisibility(View.GONE);
         viewClouds.setVisibility(View.GONE);
         viewSnow.setVisibility(View.GONE);
