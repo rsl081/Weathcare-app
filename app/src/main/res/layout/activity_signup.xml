@@ -12,136 +12,177 @@
         android:layout_height="match_parent">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:weightSum="1"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imageViewSignup"
-            android:layout_width="150dp"
-            android:layout_height="190dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/black"
-            android:onClick="onClick"
-            app:srcCompat="@drawable/ic_add_photo" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:text="REGISRATION"
-            android:fontFamily="@font/helveticaneue_bold"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="40sp"/>
-    <EditText
-        android:id="@+id/etNameSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/edit_text"
-        android:drawableLeft="@drawable/va_user_focus"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Name"
-        android:fontFamily="@font/helveticaneue_bold"
-        android:textColor="@color/white"
-        android:inputType="textPersonName"
-        android:paddingStart="10dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="8dp"
-        android:textColorHint="@color/white"
-        android:layout_gravity="center"
-        android:textSize="25sp"/>
+            android:orientation="vertical"
+            android:weightSum="1">
 
-    <EditText
-        android:id="@+id/etEmailSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/edit_text"
-        android:drawableLeft="@drawable/va_email_focus"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Email"
-        android:fontFamily="@font/helveticaneue_bold"
-        android:textColor="@color/white"
-        android:inputType="textPersonName"
-        android:paddingStart="10dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="8dp"
-        android:textColorHint="@color/white"
-        android:layout_gravity="center"
-        android:textSize="25sp"/>
+            <ImageView
+                android:id="@+id/imageViewSignup"
+                android:layout_width="150dp"
+                android:layout_height="190dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/black"
+                android:onClick="onClick"
+                app:srcCompat="@drawable/ic_add_photo" />
 
-    <EditText
-        android:id="@+id/etPasswordSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/edit_text"
-        android:drawableLeft="@drawable/va_pass_focus"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Password"
-        android:fontFamily="@font/helveticaneue_bold"
-        android:textColor="@color/white"
-        android:inputType="textPassword"
-        android:paddingStart="10dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="8dp"
-        android:textColorHint="@color/white"
-        android:layout_gravity="center"
-        android:textSize="25sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100dp"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:gravity="center"
+                android:text="REGISRATION"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
 
-    <EditText
-        android:id="@+id/etConfimPassSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/edit_text"
-        android:drawableLeft="@drawable/va_pass_focus"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Confirm Password"
-        android:fontFamily="@font/helveticaneue_bold"
-        android:textColor="@color/white"
-        android:inputType="textPassword"
-        android:paddingStart="10dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="8dp"
-        android:textColorHint="@color/white"
-        android:layout_gravity="center"
-        android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/signupBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/edit_button"
-            android:fontFamily="@font/helveticaneue_bold"
-            android:onClick="btnSignupClick"
-            android:text="Sign Up"
-            android:textColor="#6CCDE6"
-            android:textSize="20sp"
-            app:backgroundTint="@color/white" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColorHint="@color/mtrl_textinput_default_box_stroke_color"
+                app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+                app:startIconDrawable="@drawable/va_user_focus"
+                app:startIconTint="@color/white">
 
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNameSignup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:fontFamily="@font/helveticaneue_bold"
+                    android:hint="Name"
+                    android:inputType="textPersonName"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="25sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/mtrl_textinput_default_box_stroke_color"
+                app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+                app:startIconDrawable="@drawable/va_email_focus"
+                app:startIconTint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmailSignup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:fontFamily="@font/helveticaneue_bold"
+                    android:hint="Email"
+                    android:inputType="textPersonName"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="25sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/mtrl_textinput_default_box_stroke_color"
+                app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+                app:endIconMode="password_toggle"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/mtrl_textinput_default_box_stroke_color"
+                app:startIconDrawable="@drawable/va_pass_focus"
+                app:startIconTint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPasswordSignup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:fontFamily="@font/helveticaneue_bold"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="25sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/mtrl_textinput_default_box_stroke_color"
+                app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+                app:endIconMode="password_toggle"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/mtrl_textinput_default_box_stroke_color"
+                app:startIconDrawable="@drawable/va_pass_focus"
+                app:startIconTint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etConfimPassSignup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:fontFamily="@font/helveticaneue_bold"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="25sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/signupBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/edit_button"
+                android:fontFamily="@font/helveticaneue_bold"
+                android:onClick="btnSignupClick"
+                android:text="Sign Up"
+                android:textColor="#6CCDE6"
+                android:textSize="20sp"
+                app:backgroundTint="@color/white" />
+
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>
