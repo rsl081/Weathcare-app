@@ -16,11 +16,12 @@ import com.example.weathcare.R;
 import com.example.weathcare.login.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetPasswordActivity extends AppCompatActivity
 {
-    private EditText etEmail;
+    private TextInputEditText etEmail;
     private TextView tvMessage;
     private LinearLayout llResetPassword, llMessage;
     private Button btnRetry;

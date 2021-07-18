@@ -20,14 +20,15 @@
             android:orientation="vertical"
             android:weightSum="1">
 
-            <ImageView
+            <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/imageViewSignup"
+                android:layout_marginTop="15dp"
                 android:layout_width="150dp"
                 android:layout_height="190dp"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/black"
                 android:onClick="onClick"
-                app:srcCompat="@drawable/ic_add_photo" />
+                android:src="@drawable/gallery" />
 
             <TextView
                 android:layout_width="match_parent"
